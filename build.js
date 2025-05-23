@@ -1,25 +1,18 @@
-const fs = require("fs")
-const path = require("path")
-
-// Create a simple build script to ensure compatibility
+// Simple build preparation script
 console.log("Preparing build for Cloudflare Pages...")
 
-// Ensure the Discord webhook URL is properly set
-const contactPagePath = path.join(__dirname, "app", "contact", "page.tsx")
-if (fs.existsSync(contactPagePath)) {
-  let content = fs.readFileSync(contactPagePath, "utf8")
+// Check if we're in a Node.js environment
+if (typeof process !== "undefined" && process.env) {
+  console.log("Node.js environment detected")
 
-  // Replace the placeholder with the actual webhook URL from environment
+  // Log environment variables (without exposing sensitive data)
   if (process.env.DISCORD_WEBHOOK_URL) {
-    content = content.replace(
-      "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN",
-      process.env.DISCORD_WEBHOOK_URL,
-    )
-    fs.writeFileSync(contactPagePath, content)
-    console.log("Discord webhook URL updated in contact page.")
+    console.log("Discord webhook URL is configured")
   } else {
-    console.warn("Warning: DISCORD_WEBHOOK_URL environment variable not set.")
+    console.log("Warning: DISCORD_WEBHOOK_URL environment variable not set")
   }
+} else {
+  console.log("Running in browser environment")
 }
 
 console.log("Build preparation complete.")
