@@ -63,13 +63,3 @@ This website can be hosted on any static hosting platform:
 ## License
 
 This is a fan-made website for a Roblox airline group.
-\`\`\`
-
-Finally, let's create a simple deployment configuration for Cloudflare Pages:
-
-```toml file="wrangler.toml"
-name = "european-airlines"
-compatibility_date = "2023-08-14"
-
-[site]
-bucket = "."
