@@ -1,0 +1,9 @@
+name = "european-airlines-website"
+compatibility_date = "2023-11-01"
+
+[vars]
+# The variables defined here will be available in your Cloudflare Functions
+# You'll need to set DISCORD_WEBHOOK_URL in the Cloudflare dashboard
+
+[site]
+bucket = ".next/static"

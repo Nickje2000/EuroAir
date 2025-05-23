@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -7,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { submitContactForm } from "../actions/contact"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, CheckCircle2 } from "lucide-react"
 
@@ -15,13 +16,26 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formResponse, setFormResponse] = useState<{ success: boolean; message: string } | null>(null)
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     setIsSubmitting(true)
     setFormResponse(null)
 
+    const formData = new FormData(event.currentTarget)
+
     try {
-      const response = await submitContactForm(formData)
-      setFormResponse(response)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      })
+
+      const data = await response.json()
+      setFormResponse(data)
+
+      if (data.success) {
+        // Reset form on success
+        event.currentTarget.reset()
+      }
     } catch (error) {
       setFormResponse({ success: false, message: "An unexpected error occurred" })
     } finally {
@@ -63,7 +77,7 @@ export default function ContactPage() {
                 </Alert>
               )}
 
-              <form action={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label
