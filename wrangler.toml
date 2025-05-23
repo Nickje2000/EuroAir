@@ -1,9 +1,17 @@
 name = "european-airlines-website"
 compatibility_date = "2023-11-01"
+node_compat = true
+
+[build]
+command = "npm run build"
+output_dir = ".next"
+
+[build.environment]
+NODE_VERSION = "18.17.1"
+
+[env.production]
+NODE_VERSION = "18.17.1"
 
 [vars]
 # The variables defined here will be available in your Cloudflare Functions
 # You'll need to set DISCORD_WEBHOOK_URL in the Cloudflare dashboard
-
-[site]
-bucket = ".next/static"

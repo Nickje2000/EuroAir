@@ -14,6 +14,11 @@ const nextConfig = {
   },
   experimental: {
     esmExternals: true
+  },
+  // Add this to ensure compatibility with Cloudflare Pages
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false, crypto: false };
+    return config;
   }
 }
 

@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "European Airlines - Roblox Airline",
-  description: "The premier Roblox airline experience. Fly with us to destinations across Europe.",
+  description: "The premier Roblox airline experience. Fly with us to destinations across Europe."
 }
 
 export default function RootLayout({
