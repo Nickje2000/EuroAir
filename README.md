@@ -2,61 +2,74 @@
 
 This is the official website for European Airlines, a Roblox airline group.
 
-## Development
-
-To run the development server:
-
-\`\`\`bash
-pnpm install
-pnpm dev
-\`\`\`
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Deployment to Cloudflare Pages
-
-### Prerequisites
-
-1. A Cloudflare account
-2. A Discord webhook URL for the contact form (optional)
-
-### Steps
-
-1. Connect your GitHub repository to Cloudflare Pages
-2. Set the following build settings:
-   - Build command: \`pnpm run build\`
-   - Build output directory: \`out\`
-   - Node.js version: 18.17.1
-3. Add environment variables (optional):
-   - \`DISCORD_WEBHOOK_URL\`: Your Discord webhook URL
-4. Deploy!
-
-### Environment Variables
-
-The following environment variables are optional:
-
-- \`DISCORD_WEBHOOK_URL\`: The Discord webhook URL for the contact form
-
 ## Features
 
-- Home page with airline information
-- About page with airline history and fleet information
-- Careers page with job listings
-- Contact form (with optional Discord integration)
-- Responsive design for all devices
-- Static site generation for fast loading
+- **Static HTML Website**: Fast loading and compatible with any hosting platform
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- **Contact Form**: Integrated with Discord webhook for instant notifications
+- **Modern UI**: Clean, professional design using Tailwind CSS
+- **SEO Optimized**: Proper meta tags and semantic HTML structure
+
+## Pages
+
+- **Home**: Welcome page with airline overview and destinations
+- **About**: Company history, fleet information, and mission
+- **Careers**: Available positions and application process
+- **Contact**: Contact form and social media links
+
+## Deployment
+
+This website is designed to work with **Cloudflare Pages** and requires no build process.
+
+### Cloudflare Pages Setup
+
+1. Connect your GitHub repository to Cloudflare Pages
+2. Set build settings:
+   - Build command: (leave empty)
+   - Build output directory: `/` (root)
+3. Add environment variables (optional):
+   - `DISCORD_WEBHOOK_URL`: Your Discord webhook URL for contact form
+
+### Discord Webhook Setup
+
+To enable the contact form Discord integration:
+
+1. Create a Discord webhook in your server
+2. Replace `YOUR_DISCORD_WEBHOOK_URL_HERE` in `contact.html` with your actual webhook URL
+3. Deploy the changes
+
+### Alternative Hosting
+
+This website can be hosted on any static hosting platform:
+- GitHub Pages
+- Netlify
+- Vercel
+- Any web server
 
 ## Technology Stack
 
-- Next.js 13.4.19 (App Router)
-- React 18.2.0
-- TypeScript
-- Tailwind CSS
-- Lucide React Icons
-- Cloudflare Pages hosting
+- **HTML5**: Semantic markup
+- **Tailwind CSS**: Utility-first CSS framework (via CDN)
+- **Font Awesome**: Icons (via CDN)
+- **Vanilla JavaScript**: Contact form functionality
+- **Discord Webhooks**: Contact form integration
+
+## Contact Information
+
+- **Discord**: https://discord.gg/3jaEpjhk9r
+- **Email**: europeanairlines.rblx@gmail.com
+- **Roblox Group**: https://www.roblox.com/communities/34748880/European-Airlines-RBLX#!/about
+
+## License
+
+This is a fan-made website for a Roblox airline group.
 \`\`\`
 
-Let's also create a simple _redirects file for Cloudflare Pages:
+Finally, let's create a simple deployment configuration for Cloudflare Pages:
 
-```plaintext file="public/_redirects"
-/*    /index.html   200
+```toml file="wrangler.toml"
+name = "european-airlines"
+compatibility_date = "2023-08-14"
+
+[site]
+bucket = "."

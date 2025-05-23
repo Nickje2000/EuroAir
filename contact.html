@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - European Airlines</title>
+    <meta name="description" content="Have questions or feedback? We'd love to hear from you.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="border-b">
+        <div class="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+            <a href="/" class="flex items-center gap-2">
+                <i class="fas fa-plane text-blue-600 text-xl"></i>
+                <span class="text-xl font-bold">European Airlines</span>
+            </a>
+            <nav class="hidden md:flex gap-6">
+                <a href="/" class="text-sm font-medium hover:underline underline-offset-4">Home</a>
+                <a href="/about.html" class="text-sm font-medium hover:underline underline-offset-4">About Us</a>
+                <a href="/careers.html" class="text-sm font-medium hover:underline underline-offset-4">Careers</a>
+                <a href="/contact.html" class="text-sm font-medium text-blue-600 underline underline-offset-4">Contact</a>
+                <a href="https://discord.gg/3jaEpjhk9r" class="text-sm font-medium text-blue-600 hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Join our Discord</a>
+            </nav>
+            <button class="md:hidden" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t bg-white">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="/" class="block text-sm font-medium">Home</a>
+                <a href="/about.html" class="block text-sm font-medium">About Us</a>
+                <a href="/careers.html" class="block text-sm font-medium">Careers</a>
+                <a href="/contact.html" class="block text-sm font-medium text-blue-600">Contact</a>
+                <a href="https://discord.gg/3jaEpjhk9r" class="block text-sm font-medium text-blue-600" target="_blank" rel="noopener noreferrer">Join our Discord</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-blue-50">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h1>
+                        <p class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Have questions or feedback? We'd love to hear from you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32">
+            <div class="container mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-12">
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Get in Touch</h2>
+                        <p class="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Fill out the form below and we'll get back to you as soon as possible.
+                        </p>
+                    </div>
+
+                    <!-- Alert for form responses -->
+                    <div id="form-alert" class="hidden p-4 rounded-md"></div>
+
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label for="firstName" class="text-sm font-medium">First name</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="lastName" class="text-sm font-medium">Last name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm font-medium">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="subject" class="text-sm font-medium">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Enter the subject" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="message" class="text-sm font-medium">Message</label>
+                            <textarea id="message" name="message" placeholder="Enter your message" required rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="space-y-4 lg:space-y-8">
+                    <div class="rounded-lg border bg-white p-6 shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="font-medium">Discord Support</h3>
+                                <p class="text-sm text-gray-500">
+                                    The fastest way to get support is through our Discord server.
+                                </p>
+                                <a href="https://discord.gg/3jaEpjhk9r" class="text-sm font-medium text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                                    Join our Discord
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-white p-6 shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="font-medium">Email</h3>
+                                <p class="text-sm text-gray-500">For general inquiries, you can also email us.</p>
+                                <a href="mailto:europeanairlines.rblx@gmail.com" class="text-sm font-medium text-blue-600 hover:underline">
+                                    europeanairlines.rblx@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-white p-6 shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="font-medium">Roblox Group</h3>
+                                <p class="text-sm text-gray-500">Visit our Roblox group to join flights and events.</p>
+                                <a href="https://www.roblox.com/communities/34748880/European-Airlines-RBLX#!/about" class="text-sm font-medium text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                                    Roblox Group
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Community Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-blue-50">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Join Our Community</h2>
+                        <p class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Connect with other aviation enthusiasts and stay updated on our latest events.
+                        </p>
+                    </div>
+                    <a href="https://discord.gg/3jaEpjhk9r" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-md bg-blue-600 text-white px-8 py-3 text-lg font-medium hover:bg-blue-700 transition-colors gap-2">
+                        <i class="fab fa-discord"></i>
+                        Join our Discord
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t bg-gray-50">
+        <div class="container mx-auto flex flex-col gap-4 py-10 md:flex-row md:gap-8 px-4 md:px-6">
+            <div class="flex flex-col gap-2 md:gap-4 lg:gap-6">
+                <a href="/" class="flex items-center gap-2">
+                    <i class="fas fa-plane text-blue-600 text-xl"></i>
+                    <span class="text-xl font-bold">European Airlines</span>
+                </a>
+                <p class="text-sm text-gray-500">
+                    The premier Roblox airline experience. Fly with us to destinations across Europe.
+                </p>
+            </div>
+            <div class="md:ml-auto grid grid-cols-2 gap-10 sm:grid-cols-4">
+                <div class="space-y-2">
+                    <h4 class="text-sm font-medium">Navigation</h4>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="/" class="hover:underline text-gray-500">Home</a></li>
+                        <li><a href="/about.html" class="hover:underline text-gray-500">About Us</a></li>
+                        <li><a href="/careers.html" class="hover:underline text-gray-500">Careers</a></li>
+                        <li><a href="/contact.html" class="hover:underline text-gray-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-sm font-medium">Social</h4>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="https://discord.gg/3jaEpjhk9r" class="hover:underline text-gray-500" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                        <li><a href="https://www.roblox.com/communities/34748880/European-Airlines-RBLX#!/about" class="hover:underline text-gray-500" target="_blank" rel="noopener noreferrer">Roblox Group</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="border-t py-6">
+            <div class="container mx-auto flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
+                <p class="text-xs text-gray-500">© 2025 European Airlines. All rights reserved.</p>
+                <p class="text-xs text-gray-500">This is a fan-made website for a Roblox airline group.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Contact form handling with Discord webhook
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const formAlert = document.getElementById('form-alert');
+            const form = e.target;
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            formAlert.classList.add('hidden');
+            
+            // Get form data
+            const formData = new FormData(form);
+            const firstName = formData.get('firstName');
+            const lastName = formData.get('lastName');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            try {
+                // Replace with your actual Discord webhook URL
+                const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+                
+                if (webhookUrl === 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
+                    throw new Error('Discord webhook URL not configured');
+                }
+                
+                // Create Discord embed
+                const embed = {
+                    title: `New Contact Form Submission: ${subject}`,
+                    color: 0x3498db,
+                    fields: [
+                        {
+                            name: "Name",
+                            value: `${firstName} ${lastName}`,
+                            inline: true,
+                        },
+                        {
+                            name: "Email",
+                            value: email,
+                            inline: true,
+                        },
+                        {
+                            name: "Subject",
+                            value: subject,
+                            inline: false,
+                        },
+                        {
+                            name: "Message",
+                            value: message,
+                            inline: false,
+                        },
+                    ],
+                    timestamp: new Date().toISOString(),
+                };
+                
+                // Send to Discord webhook
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [embed],
+                    }),
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to send message');
+                }
+                
+                // Show success message
+                formAlert.className = 'p-4 rounded-md bg-green-50 border border-green-200';
+                formAlert.innerHTML = `
+                    <div class="flex">
+                        <i class="fas fa-check-circle text-green-400 mr-2 mt-0.5"></i>
+                        <div>
+                            <h3 class="text-sm font-medium text-green-800">Success</h3>
+                            <p class="text-sm text-green-700">Your message has been sent successfully!</p>
+                        </div>
+                    </div>
+                `;
+                formAlert.classList.remove('hidden');
+                
+                // Reset form
+                form.reset();
+                
+            } catch (error) {
+                // Show error message
+                formAlert.className = 'p-4 rounded-md bg-red-50 border border-red-200';
+                formAlert.innerHTML = `
+                    <div class="flex">
+                        <i class="fas fa-exclamation-circle text-red-400 mr-2 mt-0.5"></i>
+                        <div>
+                            <h3 class="text-sm font-medium text-red-800">Error</h3>
+                            <p class="text-sm text-red-700">An error occurred. Please try again or contact us via Discord.</p>
+                        </div>
+                    </div>
+                `;
+                formAlert.classList.remove('hidden');
+            } finally {
+                // Reset button state
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
