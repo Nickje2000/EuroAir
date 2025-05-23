@@ -12,6 +12,9 @@ import { SiteFooter } from "@/components/site-footer"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, CheckCircle2 } from "lucide-react"
 
+// This is a client-side only approach for Cloudflare Pages static export
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formResponse, setFormResponse] = useState<{ success: boolean; message: string } | null>(null)
@@ -22,22 +25,70 @@ export default function ContactPage() {
     setFormResponse(null)
 
     const formData = new FormData(event.currentTarget)
+    const firstName = formData.get("firstName") as string
+    const lastName = formData.get("lastName") as string
+    const email = formData.get("email") as string
+    const subject = formData.get("subject") as string
+    const message = formData.get("message") as string
 
     try {
-      const response = await fetch("/api/contact", {
+      // Create Discord embed
+      const embed = {
+        title: `New Contact Form Submission: ${subject}`,
+        color: 0x3498db, // Blue color
+        fields: [
+          {
+            name: "Name",
+            value: `${firstName} ${lastName}`,
+            inline: true,
+          },
+          {
+            name: "Email",
+            value: email,
+            inline: true,
+          },
+          {
+            name: "Subject",
+            value: subject,
+            inline: false,
+          },
+          {
+            name: "Message",
+            value: message,
+            inline: false,
+          },
+        ],
+        timestamp: new Date().toISOString(),
+      }
+
+      // Send to Discord webhook directly from client
+      // Note: In production, you should use a proxy or serverless function to protect your webhook URL
+      const response = await fetch(DISCORD_WEBHOOK_URL, {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          embeds: [embed],
+        }),
       })
 
-      const data = await response.json()
-      setFormResponse(data)
-
-      if (data.success) {
-        // Reset form on success
-        event.currentTarget.reset()
+      if (!response.ok) {
+        throw new Error("Failed to send message to Discord")
       }
+
+      setFormResponse({
+        success: true,
+        message: "Your message has been sent successfully!",
+      })
+
+      // Reset form
+      event.currentTarget.reset()
     } catch (error) {
-      setFormResponse({ success: false, message: "An unexpected error occurred" })
+      setFormResponse({
+        success: false,
+        message: "An unexpected error occurred. Please try again or contact us via Discord.",
+      })
     } finally {
       setIsSubmitting(false)
     }
