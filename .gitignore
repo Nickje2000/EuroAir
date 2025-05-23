@@ -32,3 +32,13 @@ Thumbs.db
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Ignore everything
+*
+# Except these files
+!.gitignore
+!index.html
+!about.html
+!careers.html
+!contact.html
+!README.md
